@@ -17,7 +17,7 @@ defmodule TacheWeb.Router do
   scope "/", TacheWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/counter", CounterLive, :index
   end
 
   # Other scopes may use custom stacks.
