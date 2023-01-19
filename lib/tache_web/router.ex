@@ -18,6 +18,7 @@ defmodule TacheWeb.Router do
     pipe_through :browser
 
     live "/counter", CounterLive, :index
+    live "/todo", TodoLive, :index
   end
 
   # Other scopes may use custom stacks.

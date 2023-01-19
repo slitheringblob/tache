@@ -8,6 +8,16 @@ defmodule Tache.Tasks do
 
   alias Tache.Tasks.Task
 
+  @topic inspect(__MODULE__)
+
+  def subscribe do
+    Phoenix.PubSub.subscribe(Tache.PubSub, @topic)
+  end
+
+  def broadcast_change({:ok, result}, event) do
+    Phoenix.PubSub.broadcast(Tache.PubSub, @topic, {__MODULE__, event, result})
+    IO.puts(Phoenix.PubSub.broadcast(Tache.PubSub, @topic, {__MODULE__, event, result}))
+  end
   @doc """
   Returns the list of tasks.
 
@@ -53,6 +63,7 @@ defmodule Tache.Tasks do
     %Task{}
     |> Task.changeset(attrs)
     |> Repo.insert()
+    |> broadcast_change([:task, :created])
   end
 
   @doc """
@@ -71,6 +82,7 @@ defmodule Tache.Tasks do
     task
     |> Task.changeset(attrs)
     |> Repo.update()
+    |> broadcast_change([:todo, :updated])
   end
 
   @doc """
@@ -86,7 +98,9 @@ defmodule Tache.Tasks do
 
   """
   def delete_task(%Task{} = task) do
-    Repo.delete(task)
+    task
+    |> Repo.delete()
+    |> broadcast_change([:task, :deleted])
   end
 
   @doc """

@@ -118,3 +118,9 @@
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
+
+.number{
+  border: 2px solid #008CBA;
+  padding: 20px;
+  margin: 20px;
+}

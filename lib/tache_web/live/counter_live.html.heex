@@ -1,10 +1,12 @@
 <br>
-      <span ><strong>Counter:</strong></span> <%= @number %> <br><br>
+      <strong>Counter:</strong><span class="number"><%= @number %></span><br><br>
       <strong>Singluar Increments/Decrements</strong><br>
-      <button phx-click="add">Add</button>
-      <button phx-click="subtract">Subtract</button><br><br>
+      <button phx-click="add" class="">+1</button>
+      <button phx-click="subtract">-1</button><br><br>
 
       <strong>Chonk Increments(Empty values default to 1)</strong>
+
+
       <.form let={f} for={:add_form} phx-submit="add_by">
         <%= text_input f, :diff_amount %>
         <button>Add </button>
@@ -15,4 +17,6 @@
         <%= text_input f, :diff_amount %>
         <button>Subtract </button>
       </.form>
-      <span>(Refresh the page to reset the counter to zero!)</span>
+
+
+      <span class="alert-danger">(Refresh the page to reset the counter to zero!)</span>

@@ -2,7 +2,7 @@ defmodule Tache.Tasks.Task do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @primary_key {:uuid, :binary_id, autogenerate: true}
+  @primary_key {:uuid, Ecto.UUID, autogenerate: true}
   schema "tasks" do
     field :status, :string
     field :title, :string
