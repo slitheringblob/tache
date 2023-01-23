@@ -8,7 +8,7 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Note: Dont worry when you go to `localhost:4000` and it shows and error. Just append any one of the endpoint URLs from below and it should work.
+Note: Dont worry when you go to `localhost:4000` and it shows an error. Just append any one of the endpoint URLs from below and it should work.
 ## Endpoints:
 
 | Endpoint | HTTP Method | Usage |
