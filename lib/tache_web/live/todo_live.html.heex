@@ -1,10 +1,11 @@
 <form action="#" phx-submit="add_task">
-    <%= text_input :task, :title, placeholder: "What is this task about?" %> 
+    <%= text_input :task, :title, placeholder: "What is this task about?" %>
     <%= select :task, :status,[[key: "Backlog", value: "backlog"],
                                 [key: "In-Progress", value: "inprogress"],
                                 [key: "Done", value: "done" ]] %>
-    
+
     <%= submit "Add Task", phx_disable_with: "Adding it....!" %>
+
 </form>
 
 
