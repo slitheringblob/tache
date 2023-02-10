@@ -1,4 +1,11 @@
 # Tache
+Tache has a dumb counter and a todo-list built into it. You can access both from the nav bar.
+
+## Dumb Counter
+The dumb counter is just a single and multi-increment counter.
+
+## Todo List
+The todo list has a task list and state-change capabilities that is based on LiveView and Machinery. LiveView powers the frontend and Machinery implements the finite state machine that controls the transitions.
 
 To start your Phoenix server:
 
@@ -8,7 +15,6 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Note: Dont worry when you go to `localhost:4000` and it shows an error. Just append any one of the endpoint URLs from below and it should work.
 ## Endpoints:
 
 | Endpoint | HTTP Method | Usage |
