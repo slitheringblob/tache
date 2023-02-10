@@ -124,3 +124,11 @@
   padding: 20px;
   margin: 20px;
 }
+
+.datatable td, .datatable th {
+  padding: 8px;
+}
+
+.datatable tr:nth-child(even){background-color: #f2f2f2;}
+
+.datatable tr:hover {background-color: #ddd;}

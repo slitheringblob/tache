@@ -82,7 +82,7 @@ defmodule Tache.Tasks do
     task
     |> Task.changeset(attrs)
     |> Repo.update()
-    |> broadcast_change([:todo, :updated])
+    |> broadcast_change([:task, :updated])
   end
 
   @doc """

@@ -8,7 +8,31 @@
 
 </form>
 
+<%= if @invalid_transition do %>
+    <p class="alert alert-danger">Invalid Transition!</p>
+<% else %>
+    <p class="alert alert-info">Task Status Changed!</p>
+<% end %>
+
+<table class="datatable">
+<tr>
+    <th>Task</th>
+    <th>Current Status</th>
+    <th>Status-Change-Buttons</th>
+</tr>
 
 <%= for task <- @tasklist do %>
-    <div><span><%= task.title %></span> <span><%= task.status %></span></div>
+    <tr>
+        <td><%= task.title %></td>
+        <td><%= task.status %></td>
+        <td>
+            <button phx-click="handle_state_change" phx-value-button-name="backlog" phx-value-task-id={task.uuid}>Backlog</button>
+            <button phx-click="handle_state_change" phx-value-button-name="inprogress" phx-value-task-id={task.uuid}>In-Progress</button>
+            <button phx-click="handle_state_change" phx-value-button-name="done" phx-value-task-id={task.uuid}>Done</button>
+        </td>
+
+
+    </tr>
+
 <% end %>
+</table>

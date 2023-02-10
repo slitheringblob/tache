@@ -16,7 +16,7 @@ defmodule TacheWeb.Router do
 
   scope "/", TacheWeb do
     pipe_through :browser
-
+    get "/", PageController, :index
     live "/counter", CounterLive, :index
     live "/todo", TodoLive, :index
   end
