@@ -19,6 +19,8 @@ defmodule TacheWeb.Router do
     get "/", PageController, :index
     live "/counter", CounterLive, :index
     live "/todo", TodoLive, :index
+    live "/signup", SignupLive, :index
+    live "/login", LoginLive, :index
   end
 
   # Other scopes may use custom stacks.

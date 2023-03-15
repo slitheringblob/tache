@@ -6,7 +6,7 @@ defmodule Tache.Tasks.Task do
   schema "tasks" do
     field :status, :string
     field :title, :string
-
+    belongs_to :user, Tache.User
     timestamps()
   end
 

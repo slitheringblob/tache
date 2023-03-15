@@ -1,4 +1,7 @@
 defmodule TacheWeb.CounterLive do
+  @moduledoc """
+  this module mounts, renders and handles all the events for the dumb counter. It can add, subtract and chunk add subtract.
+  """
   use TacheWeb, :live_view
 
   def mount(_params, _session, socket) do
