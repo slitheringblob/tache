@@ -1,3 +1,19 @@
+
+<%!-- <.form let={f} for={@changeset} phx-change="validate" phx-submit="create_user">
+  <%= label f, :username %>
+  <%= text_input f, :username , placeholder: "Username"%>
+  <%= error_tag f, :username %>
+
+  <%= label f, :password %>
+  <%= password_input f, :password , placeholder: "Password" %>
+  <%= error_tag f, :password %>
+
+  <div class="radio_group">
+  <%= label f, :Male %><%= radio_button f, :gender, "male" %>
+  <%= label f, :Female %><%= radio_button f, :gender, "female" %>
+   </div>
+  <%= submit "Sign Up!" %>
+</.form> --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,6 +127,26 @@ button_signup{
 </head>
 
 <body>
-    <p> Hello</p>
+    <.form let={f} for={@conn} action={Routes.page_path(@conn, :create_user)}>
+
+        <h3>Taché</h3>
+        <%= label f, :username %>
+        <%= text_input f, :username , placeholder: "Username"%>
+        <%= error_tag f, :username %>
+
+        <%= label f, :password %>
+        <%= password_input f, :password , placeholder: "Password" %>
+        <%= error_tag f, :password %>
+
+        <%= label f, :gender %>
+
+        <div class="radio-group">
+        <div class="radio-container"><%= radio_button f, :gender, "male" %> <%= label f, :Male %></div>
+        <div class="radio-container"><%= radio_button f, :gender, "female" %> <%= label f, :Female %></div>
+        </div>
+        <%= submit "Sign Up!" %>
+
+        <button class="button button_signup"><a href="/login">Already Done? Log In!</a></button>
+    </.form>
 </body>
 </html>

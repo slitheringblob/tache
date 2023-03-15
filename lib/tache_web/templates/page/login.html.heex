@@ -17,7 +17,7 @@ body{
     background-color: #080710;
 }
 form{
-    height: 800px;
+    height: 620px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -51,9 +51,8 @@ label{
     font-weight: 500;
 }
 input{
-    border: 1px solid white;
     display: block;
-    height: 60px;
+    height: 50px;
     width: 100%;
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
@@ -81,36 +80,26 @@ button_signup{
     background-color: #fffff;
 }
 
-.radio-group {
-   border: 1px solid white;
-  display: inline-flex;
-  height: 100px;
-  width: 100%;
-  background-color: rgba(255,255,255,0.07);
-  border-radius: 3px;
-  padding: 0 10px;
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-}
-.radio-container{
-  padding-top: 15px;
-  padding-left: 2px;
-  display: inline-flex;
-  width: 50%;
-  height: 100%;
-  align: center;
-  overflow: hidden;
-}
 
-.radio-container label{
-  align: center;
-}
 
     </style>
 </head>
 
 <body>
-    <p> Hello</p>
+    <.form let={f} for={@conn}>
+        <h3>Taché</h3>
+        <%= label f, :username %>
+        <%= text_input f, :username , placeholder: "Username"%>
+        <%= error_tag f, :username %>
+
+        <%= label f, :password %>
+        <%= password_input f, :password , placeholder: "Password"%>
+        <%= error_tag f, :password %>
+
+
+        <%= submit "Log In!" %>
+
+        <button class="button button_signup"><a href="/signup">New Here? SignUp!</a></button>
+    </.form>
 </body>
 </html>

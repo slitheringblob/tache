@@ -16,11 +16,18 @@ defmodule TacheWeb.Router do
 
   scope "/", TacheWeb do
     pipe_through :browser
+
     get "/", PageController, :index
+
+    get "/signup", PageController, :signup
+    post "/signup", PageController, :create_user
+
+    get "/login", PageController, :login
+
     live "/counter", CounterLive, :index
     live "/todo", TodoLive, :index
-    live "/signup", SignupLive, :index
-    live "/login", LoginLive, :index
+    # live "/signup", SignupLive, :index
+    # live "/login", LoginLive, :index
   end
 
   # Other scopes may use custom stacks.
