@@ -86,7 +86,7 @@ button_signup{
 </head>
 
 <body>
-    <.form let={f} for={@conn}>
+    <.form let={f} for={@login_changeset} action={Routes.page_path(@conn, :authenticate_user)}>
         <h3>Taché</h3>
         <%= label f, :username %>
         <%= text_input f, :username , placeholder: "Username"%>

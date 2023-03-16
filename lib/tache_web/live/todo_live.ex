@@ -10,11 +10,12 @@ defmodule TacheWeb.TodoLive do
   @doc """
   mounts the socket to the lv and sets the state variable for transitions
   """
-  def mount(_params, _session, socket) do
-
+  def mount(params, session, socket) do
+    IO.inspect session
     Tasks.subscribe()
+    {:ok, username} = Map.fetch(session, "username")
     socket = assign(socket, :invalid_transition, false)
-    socket = assign(socket, :username, "default")
+    socket = assign(socket, :username, username)
     {:ok, reload(socket)}
 
   end

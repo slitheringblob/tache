@@ -127,7 +127,7 @@ button_signup{
 </head>
 
 <body>
-    <.form let={f} for={@conn} action={Routes.page_path(@conn, :create_user)}>
+    <.form let={f} for={@user_changeset} action={Routes.page_path(@conn, :create_user)}>
 
         <h3>Taché</h3>
         <%= label f, :username %>

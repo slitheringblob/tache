@@ -12,14 +12,38 @@ defmodule TacheWeb.PageController do
   end
 
   def login(conn, _params) do
-    render conn
+    login_changeset = Users.login_changeset()
+    render conn, login_changeset: login_changeset
   end
 
-  def create_user(conn, %{} = user_params) do
+  def create_user(conn, %{"user"=> user_params}) do
     IO.puts "Create User Called!"
-    IO.inspect user_params
 
-    render conn
+    case Users.create_user(user_params) do
+      {:ok, _user} ->
+        conn
+        |> put_flash(:info, "User Created!")
+        |> redirect(to: "/login")
+      {:error, user_changeset} ->
+        conn
+        |> put_flash(:error, "Unable to create Account!")
+        |> render("signup.html", user_changeset: user_changeset)
+    end
+  end
+
+  def authenticate_user(conn, %{"user" => %{"password" => form_password, "username" => username}}) do
+    IO.puts "Auth User Called!"
+
+    case Users.authenticate_user(username, form_password) do
+      {:ok, _} ->
+        conn
+        |> put_session(:username, username)
+        |> redirect(to: "/todo")
+      {:error, user_changeset} ->
+        conn
+        |> put_flash(:error, "Unable to Login!")
+        |> render("login.html", login_changeset: user_changeset)
+    end
   end
 
 end
