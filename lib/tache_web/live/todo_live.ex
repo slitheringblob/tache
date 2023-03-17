@@ -68,7 +68,6 @@ defmodule TacheWeb.TodoLive do
         {:noreply, reload(socket)}
 
       end
-
   end
 
   defp reload(socket) do

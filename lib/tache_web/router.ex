@@ -56,6 +56,12 @@ defmodule TacheWeb.Router do
 
     live "/", TodoLive, :index
   end
+
+  scope "/logout", TacheWeb do
+    pipe_through :browser
+
+    get "/", LogoutController, :index
+  end
   # Other scopes may use custom stacks.
   # scope "/api", TacheWeb do
   #   pipe_through :api
