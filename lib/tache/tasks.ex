@@ -7,6 +7,7 @@ defmodule Tache.Tasks do
   alias Tache.Repo
 
   alias Tache.Tasks.Task
+  alias Tache.User
 
   @topic inspect(__MODULE__)
 
@@ -29,6 +30,10 @@ defmodule Tache.Tasks do
   """
   def list_tasks do
     Repo.all(Task)
+  end
+
+  def list_userwise_tasks(user_id) do
+    Repo.all(from t in Task, where: t.user_id == ^user_id)
   end
 
   @doc """
@@ -62,13 +67,13 @@ defmodule Tache.Tasks do
   def create_task(attrs \\ %{}) do
     %Task{}
     |> Task.changeset(attrs)
+    |> IO.inspect
     |> Repo.insert()
     |> broadcast_change([:task, :created])
   end
 
   @doc """
   Updates a task.
-
   ## Examples
 
       iex> update_task(task, %{field: new_value})

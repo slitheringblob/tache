@@ -6,12 +6,12 @@ defmodule TacheWeb.TodoLive do
 
   alias Tache.Tasks
   alias Tache.TaskStateMachine
+  alias Tache.Users
 
   @doc """
-  mounts the socket to the lv and sets the state variable for transitions
+  mounts the socket to the lv and sets the state variable for transitions and the logged-in username
   """
-  def mount(params, session, socket) do
-    IO.inspect session
+  def mount(_params, session, socket) do
     Tasks.subscribe()
     {:ok, username} = Map.fetch(session, "username")
     socket = assign(socket, :invalid_transition, false)
@@ -43,6 +43,9 @@ defmodule TacheWeb.TodoLive do
   # handle_event("add_task", %{"task" => %{"status" => "loading", "title" => "testing adding task"}}
   """
   def handle_event("add_task", %{"task" => input} , socket) do
+    user = Users.get_user!(socket.assigns.username)
+    user_id = user.id
+    input = Map.put(input, "user_id", user_id)
     Tasks.create_task(input)
     {:noreply, reload(socket)}
   end
@@ -71,7 +74,8 @@ defmodule TacheWeb.TodoLive do
   end
 
   defp reload(socket) do
-    assign(socket, tasklist: Tasks.list_tasks())
+    user_id = Users.get_user!(socket.assigns.username).id
+    assign(socket, tasklist: Tasks.list_userwise_tasks(user_id))
   end
 
 end
