@@ -1,4 +1,7 @@
 defmodule Tache.User do
+  @moduledoc """
+  THis module has the schema-definition and changeset for the User Schema
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

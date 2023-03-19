@@ -7,7 +7,6 @@ defmodule Tache.Tasks do
   alias Tache.Repo
 
   alias Tache.Tasks.Task
-  alias Tache.User
 
   @topic inspect(__MODULE__)
 
@@ -67,7 +66,6 @@ defmodule Tache.Tasks do
   def create_task(attrs \\ %{}) do
     %Task{}
     |> Task.changeset(attrs)
-    |> IO.inspect
     |> Repo.insert()
     |> broadcast_change([:task, :created])
   end

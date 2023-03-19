@@ -1,4 +1,7 @@
 defmodule TacheWeb.Authenticator do
+  @moduledoc """
+  This module is responsible to persist the username across https and socket connections
+  """
   import Plug.Conn
 
   def init(opts), do: opts

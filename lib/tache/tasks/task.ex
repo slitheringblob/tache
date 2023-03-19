@@ -1,4 +1,7 @@
 defmodule Tache.Tasks.Task do
+  @moduledoc """
+  this module has the schema-definition and the base changeset for the tasks schema
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

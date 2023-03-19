@@ -1,4 +1,7 @@
 defmodule TacheWeb.Telemetry do
+  @moduledoc """
+  telemetry module for stats and data about queries and connections
+  """
   use Supervisor
   import Telemetry.Metrics
 

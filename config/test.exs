@@ -6,9 +6,10 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :tache, Tache.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "jaydeep",
+  password: "jaydeep",
   hostname: "localhost",
+  port: "5432",
   database: "tache_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
