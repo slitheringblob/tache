@@ -10,7 +10,14 @@ defmodule Tache.MixProject do
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -51,7 +58,8 @@ defmodule Tache.MixProject do
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
       {:bcrypt_elixir, "~> 2.0"},
-      {:comeonin, "~> 5.3"}
+      {:comeonin, "~> 5.3"},
+      {:excoveralls, "~> 0.16", only: :test}
     ]
   end
 

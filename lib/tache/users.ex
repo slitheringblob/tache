@@ -9,7 +9,7 @@ defmodule Tache.Users do
   alias Tache.User
 
   #payload:%{"gender" => gender, "password" => password, "username" => username}
-  def create_user(user_params = %{"gender" => gender, "password" => password, "username" => username}) do
+  def create_user(%{"gender" => _gender, "password" => password, "username" => _username} = user_params) do
     encrypted_password = Bcrypt.hash_pwd_salt(password)
     register_user_changeset(user_params)
     |> put_change(:encrypted_password, encrypted_password)

@@ -7,7 +7,6 @@ defmodule TacheWeb.TodoLive do
   alias Tache.Tasks
   alias Tache.TaskStateMachine
   alias Tache.Users
-
   @doc """
   mounts the socket to the lv and sets the state variable for transitions and the logged-in username
   """
@@ -19,7 +18,6 @@ defmodule TacheWeb.TodoLive do
     {:ok, reload(socket)}
 
   end
-
 
   @doc """
   This module just reloads the socket with the list of tasks

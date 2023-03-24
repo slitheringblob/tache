@@ -1,6 +1,12 @@
 defmodule TacheWeb.PageController do
+  @moduledoc """
+  This module handles authe and autho for the user.
+  It persists the username across the controller --> lv to be used to filter tasks user-wise
+  """
   use TacheWeb, :controller
   alias Tache.Users
+
+  import Plug.Conn
 
   def index(conn, _params) do
     render(conn, "index.html")
@@ -44,6 +50,13 @@ defmodule TacheWeb.PageController do
         |> put_flash(:error, "Unable to Login!")
         |> render("login.html", login_changeset: user_changeset)
     end
+  end
+
+  def logout(conn, _params) do
+    conn
+    |> clear_session()
+    |> configure_session(drop: true)
+    |> redirect(to: "/login")
   end
 
 end

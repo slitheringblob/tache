@@ -23,7 +23,7 @@ defmodule TacheWeb.SignupLive do
 
   def handle_event("create_user", %{"user" => user_params}, socket) do
     case Users.create_user(user_params) do
-      {:ok, user} -> {:noreply,
+      {:ok, _user} -> {:noreply,
       socket
       |> put_flash(:info, "User Created!")
       |> redirect(to: "/login")}

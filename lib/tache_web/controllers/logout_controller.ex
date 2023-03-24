@@ -1,4 +1,7 @@
 defmodule TacheWeb.LogoutController do
+  @moduledoc """
+  this has been deprecated and moved to the PageController.
+  """
   use TacheWeb, :controller
 
   import Plug.Conn
